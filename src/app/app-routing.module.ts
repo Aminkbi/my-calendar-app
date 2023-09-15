@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 
 const routes: Routes = [
   { path: '', component: CalendarViewComponent },
   {
     path: 'new',
-    loadChildren: () =>
-      import('../app/new-appointment/new-appointment.component').then(
-        (m) => m.NewAppointmentComponent
-      ),
+    component: NewAppointmentComponent,
   },
   { path: '**', redirectTo: '' },
 ];
