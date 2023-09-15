@@ -1,0 +1,48 @@
+<div class="bg-blue-200 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-2xl font-semibold mb-4">Choose a Date</h1>
+    <mat-card class="w-[300px]">
+      <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+    </mat-card>
+
+    <form #appointmentForm="ngForm" class="flex flex-col mt-4">
+      <mat-form-field>
+        <input
+          matInput
+          name="appointmentName"
+          ngModel
+          required
+          placeholder="Appointment Name"
+        />
+
+        <mat-error
+          *ngIf="appointmentForm.controls?.['appointmentName']?.errors?.['required']"
+        >
+          Appointment name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          name="appointmentDate"
+          [ngModel]="selectedDate"
+          (ngModelChange)="selectedDate = $event"
+          placeholder="Appointment Date"
+          readonly="true"
+        />
+      </mat-form-field>
+
+      <button
+        class="btn btn-primary"
+        [disabled]="!appointmentForm.form.valid"
+        (click)="submitForm(appointmentForm)"
+      >
+        Submit
+      </button>
+      <a routerLink="/new">
+        <button class="btn btn-primary">New Appointment</button></a
+      >
+    </form>
+  </div>
+</div>
