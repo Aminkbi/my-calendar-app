@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { CalendarService } from '../services/calendar.service';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from '../utils/colors';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-new-appointment',
@@ -28,6 +28,7 @@ import { Router } from '@angular/router';
     MatSelectModule,
     FormsModule,
     CommonModule,
+    RouterLink,
   ],
 })
 export class NewAppointmentComponent {
